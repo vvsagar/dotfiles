@@ -106,6 +106,12 @@ o = [
   ":sh echo \"$(git remote get-url origin | sed 's/\\.git$//' | sed 's/git@github\\.com:/https:\\/\\/github\\.com\\//')/blob/$(git rev-parse HEAD)/%{buffer_name}#L%{selection_line_start}-L%{selection_line_end}\" | pbcopy",
 ]
 
+[keys.normal.","]
+# Compile document, be it typst/groff/LaTeX/markdown/etc.
+c = [":write", ":sh compiler %{buffer_name}"]
+# Open corresponding .pdf/.html or preview
+p = ":sh opout %{buffer_name}"
+
 [keys.select]
 X = ["extend_line_up", "extend_to_line_bounds"]
 A-x = "extend_to_line_bounds"
