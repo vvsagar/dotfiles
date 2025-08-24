@@ -20,6 +20,7 @@ se() {
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
+	..='cd ..'\
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -vI" \
@@ -31,6 +32,7 @@ alias \
 	ytt="yt --skip-download --write-thumbnail" \
 	ffmpeg="ffmpeg -hide_banner"
 
+
 # Colorize commands when possible.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
@@ -41,24 +43,34 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
+	l="ls -vFlhN --color=auto --group-directories-first" \
   c="clear" \
 	ka="killall" \
 	g="git" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="shutdown -h now" \
-	e='$EDITOR' \
+	e='helix' \
 	v='$EDITOR' \
 	hx='helix' \
 	p="pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
 	xq="xbps-query" \
-	z="zathura"
+	z="zathura"\
+	p3='python3'
+
+# tmux shortcuts
+alias\
+	tl='tmux ls'\
+	ta='tmux attach -t'\
+	tn='tmux new -s'
 
 alias \
 	lf="lfub" \
 	magit="nvim -c MagitOnly" \
 	ref='shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc'
 
-alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+alias\
+	dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'\
+	dfg='dotfiles'
