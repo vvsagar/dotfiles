@@ -1,0 +1,3 @@
+# ~/.config/helix/themes/gruvbox_dark_hard_transparent.toml
+inherits = "gruvbox"
+"ui.background" = {}
