@@ -8,8 +8,16 @@
 
 file="${1}"
 ext="${file##*.}"
-dir=${file%/*}
 base="${file%.*}"
+
+case "$file" in
+    *"/"*)
+        dir=${file%/*}
+        ;;
+    *)
+        dir="$PWD"
+        ;;
+esac
 
 cd "${dir}" || exit "1"
 
