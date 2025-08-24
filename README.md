@@ -44,6 +44,33 @@ curl -LO larbs.xyz/larbs.sh
 or clone the repo files directly to your home directory and install the
 [dependencies](https://github.com/LukeSmithxyz/LARBS/blob/master/static/progs.csv).
 
+## Managing these dotfiles
+
+As simple as can be.
+
+After installing as before, clone it as a bare repo:
+
+```sh
+git clone --bare http://github.com/vvsagar/dotfiles ~/.dotfiles
+
+# create an alias to manage the dotfiles
+cat >> ~/.config/shell/aliasrc <<'EOF'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+EOF
+
+# ignore all files by default (to start tracking a new file, use git add -f)
+printf "*" > ~/.gitignore
+
+# or
+dotfiles config --local status.showUntrackedFiles no
+```
+
+and now your `$HOME` directory acts as a git repository, just that instead of using the `git` command, you use the `dotfiles` one --
+this prevents you from accidently committing files in other repositories, and in general has multiple benefits.
+
+originally inspired by "bare repository and alias method" in https://wiki.archlinux.org/title/Dotfiles#Tracking_dotfiles_directly_with_Git
+
+
 ## Default Desktop Artwork
 
 Thomas Thiemeyer's *The Road to Samarkand* ([fb](https://www.facebook.com/t.thiemeyer/), [insta](https://www.instagram.com/tthiemeyer/), [shop](https://www.redbubble.com/de/people/TThiemeyer/shop))
