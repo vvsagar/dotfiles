@@ -6,9 +6,9 @@ user_pref("browser.urlbar.quicksuggest.enabled", false);
 user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
 
 // Do not suggest web history in the URL bar:
-user_pref("browser.urlbar.suggest.history", false);
+// user_pref("browser.urlbar.suggest.history", false);
 
-// Do not prefil forms:
+// Do not prefill forms:
 user_pref("signon.prefillForms", false);
 
 // Do not autocomplete in the URL bar:
@@ -41,7 +41,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("network.http.referer.XOriginPolicy", 0);
 
 // Disable Firefox sync and its menu entries
-user_pref("identity.fxaccounts.enabled", false);
+// user_pref("identity.fxaccounts.enabled", false);
 
 // Fix the issue where right mouse button instantly clicks
 user_pref("ui.context_menus.after_mouseup", true);
