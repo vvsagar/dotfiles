@@ -77,7 +77,7 @@ C-y = [
 A-j = [
   "ensure_selections_forward",
   "extend_to_line_bounds",
-  "extend_char_right",
+"extend_char_right",
   "extend_char_left",
   "delete_selection",
   "add_newline_below",
@@ -103,7 +103,7 @@ Q = ":quit-all!"
 
 [keys.normal.","]
 # Compile document, be it typst/groff/LaTeX/markdown/etc.
-c = [":write", ":sh compiler %{buffer_name}"]
+c = [":write", ":sh compiler $PWD/%{buffer_name}"]
 # Open corresponding .pdf/.html or preview
 p = ":sh opout %{buffer_name}"
 
