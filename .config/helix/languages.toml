@@ -10,12 +10,11 @@ auto-format = true
 
 [[language]]
 name = "python"
-language-servers = ["pyright", "ruff"]
-formatter = { command = "sh", args = [
-  "-c",
-  "ruff format - | ruff check --select I --fix - ",
-] }
+language-servers = ["pylsp", "ruff"]
 auto-format = true
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
 
 [[language]]
 name = "bash"
@@ -24,8 +23,17 @@ auto-format = true
 
 [[language]]
 name = "typst"
+soft-wrap.wrap-at-text-width = true
 language-servers = ["tinymist", "harper-ls"]
 auto-format = true
+
+[[language]]
+name = "markdown"
+soft-wrap.wrap-at-text-width = true
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
 
 [language-server.tinymist.config]
 tinymist.formatterMode = "typstyle"
