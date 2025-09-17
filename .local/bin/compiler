@@ -46,6 +46,12 @@ case "${ext}" in
     scad) openscad -o "${base}.stl" "${file}" ;;
     sent) setsid -f sent "${file}" 2> "/dev/null" ;;
     tex) latexmk ;;
-    typ) typst compile --root $(git rev-parse --show-toplevel) "${file}" ;;
+    typ)
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        typst compile --root $(git rev-parse --show-toplevel) "${file}"
+    else
+        typst compile "${file}"
+    fi
+    ;;
     *) sed -n '/^#!/s/^#!//p; q' "${file}" | xargs -r -I % "${file}" ;;
 esac
