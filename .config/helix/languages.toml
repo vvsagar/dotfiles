@@ -10,7 +10,8 @@ auto-format = true
 
 [[language]]
 name = "python"
-language-servers = ["pylsp", "ruff"]
+# language-servers = ["pylsp", "ruff"]
+language-servers = ["pyrefly", "ruff"]
 auto-format = true
 
 [language-server.rust-analyzer.config.check]
@@ -31,12 +32,17 @@ auto-format = true
 name = "markdown"
 soft-wrap.wrap-at-text-width = true
 
+[language-server.pyrefly]
+command = "pyrefly"
+args = ["lsp"]
+
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
 
 [language-server.tinymist.config]
 tinymist.formatterMode = "typstyle"
+tinymist.lint.enabled = true
 
 [language-server.harper-ls]
 command = "harper-ls"
