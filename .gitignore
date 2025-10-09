@@ -1,0 +1,11 @@
+# $HOME/.gitignore
+#
+# needed for $HOME/.dotfiles
+#
+# Read more about the dotfile management at https://wiki.archlinux.org/index.php/Dotfiles
+# (specifically https://wiki.archlinux.org/index.php/Dotfiles#Tracking_dotfiles_directly_with_Git )
+#
+
+# ignore everything but not dotfiles.
+# add new files with `git add -f`.
+*
