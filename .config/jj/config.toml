@@ -1,0 +1,32 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[aliases]
+clone = ["git", "clone"]
+fetch = ["git", "fetch"]
+push = ["git", "push"]
+d = ["diff"]
+l = ["log"]
+ll = ["log", "-r", ".."]
+sp = ["split"]
+# Find the closest ancestor with a bookmark pointing at it, and move it to the
+# parent of the working copy.
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+# A smart auto-resolver for conflicts
+solve = ["resolve", "--tool", "mergiraf"]
+
+[ui]
+# paginate = "never"
+default-command = "status"
+
+[templates]
+draft_commit_description ='''
+    concat(
+      coalesce("\n", description, default_commit_description, "\n"),
+      surround(
+        "\nJJ: This commit contains the following changes:\n", "",
+        indent("JJ:     ", diff.stat(72)),
+      ),
+      "\nJJ: ignore-rest\n",
+      diff.git(),
+    )
+'''
