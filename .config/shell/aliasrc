@@ -18,6 +18,10 @@ se() {
 	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
 	}
 
+mkcd () {
+  mkdir -p $@ && cd ${@:$#}
+}
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	..='cd ..'\
@@ -62,7 +66,7 @@ alias \
 	p3='python3'
 
 # tmux shortcuts
-alias\
+alias \
 	tl='tmux ls'\
 	ta='tmux attach -t'\
 	tn='tmux new -s'
@@ -72,6 +76,6 @@ alias \
 	magit="nvim -c MagitOnly" \
 	ref='shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc'
 
-alias\
+alias \
 	dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'\
 	dfg='dotfiles'
