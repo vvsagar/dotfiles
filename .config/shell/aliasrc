@@ -50,8 +50,6 @@ alias \
 	l="ls -vFlhN --color=auto --group-directories-first" \
   c="clear" \
 	ka="killall" \
-	g="git" \
-	gs="g s" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="shutdown -h now" \
