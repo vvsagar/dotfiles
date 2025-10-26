@@ -13,6 +13,8 @@ idle-timeout = 50
 bufferline = "multiple"
 auto-save = true
 soft-wrap.enable = true
+# Sync clipboard with system clipboard
+default-yank-register = "+"
 
 [editor.cursor-shape]
 insert = "bar"
