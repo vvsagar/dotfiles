@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# When clicked, brings up `bluetui`.
+
+case $BLOCK_BUTTON in
+  1) setsid "$TERMINAL" -e bluetui ;;
+  3) notify-send " Bluetooth module \
+									- Left click opens bluetui" ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+echo " "
