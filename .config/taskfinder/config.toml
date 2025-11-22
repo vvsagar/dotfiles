@@ -1,0 +1,9 @@
+path = "/home/vidya/Obsidian"
+num_tasks_log = "/home/vidya/.local/share/taskfinder/num_tasks_log"
+file_extensions = ["txt", "md", "typ"]
+days_to_stale = 365
+include_completed = false
+priority_markers = ["pri@1", "pri@2", "pri@3", "pri@4", "pri@5"]
+evergreen_file = ""
+start_mode = "Tasks"
+overdue_blink = true
