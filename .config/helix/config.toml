@@ -46,6 +46,8 @@ display-progress-messages = true
 display-inlay-hints = true
 
 [keys.normal]
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
 Cmd-s = ":write"
 esc = ["collapse_selection", "keep_primary_selection"]
 A-x = "extend_to_line_bounds"
@@ -79,7 +81,7 @@ C-y = [
 A-j = [
   "ensure_selections_forward",
   "extend_to_line_bounds",
-"extend_char_right",
+  "extend_char_right",
   "extend_char_left",
   "delete_selection",
   "add_newline_below",
