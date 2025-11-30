@@ -4,6 +4,9 @@
 clone = ["git", "clone"]
 fetch = ["git", "fetch"]
 push = ["git", "push"]
+pushn = ["git", "push", "--allow-new"]
+n = ["new"]
+e = ["edit"]
 d = ["diff"]
 l = ["log"]
 ll = ["log", "-r", ".."]
@@ -13,6 +16,9 @@ sp = ["split"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 # A smart auto-resolver for conflicts
 solve = ["resolve", "--tool", "mergiraf"]
+cm = ["commit", "-m"]
+dm = ["describe", "-m"]
+nb = ["bookmark", "create", "-r @-"]      # "new bookmark"
 
 [ui]
 # paginate = "never"
