@@ -1,0 +1,38 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# Disable the package module, hiding it from the prompt completely
+# [package]
+# disabled = true
+
+[custom.basf2]
+# The command executes a short shell script (using bash syntax) to check
+# the environment variables sequentially.
+command = '''
+if [[ -n "$BELLE2_RELEASE" ]]; then
+    # 1. If BELLE2_RELEASE is set, echo its value.
+    echo "b2: $BELLE2_RELEASE "
+elif [[ -n "$BELLE2_LOCAL_DIR" ]]; then
+    # 2. If not, but BELLE2_LOCAL_DIR is set, echo the last component of the path.
+    #    The shell expansion '${BELLE2_LOCAL_DIR##*/}' handles this path component extraction.
+    echo "b2: ${BELLE2_LOCAL_DIR##*/}"
+fi
+# If neither is set, the script outputs nothing, and the module is hidden.
+'''
+
+# Define the format and style for the output when it appears
+format = "$all [$output]($style) "
+style = "bold yellow"
+
+# The module should always run to check the variables
+when = true
