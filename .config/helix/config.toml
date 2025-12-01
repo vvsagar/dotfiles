@@ -115,3 +115,24 @@ p = ":sh opout %{buffer_name}"
 X = ["extend_line_up", "extend_to_line_bounds"]
 A-x = "extend_to_line_bounds"
 A-g = ":reset-diff-change"
+
+# "\\" is how to use \ as the beginning of a mapping,
+# and so this is a subtable of keys.normal for \
+[keys.normal."\\"]
+# taskfinder shortcuts
+# Convert the line into a task
+t = "@ghwi- [ ]<esc>"
+# mark as done ("[ ]" to "[x]")
+X = "@ghxs\\[ \\]<ret>c[x]<esc>" # mark as done
+# mark as done and append completed date to end of line
+x = "@ghxs\\[ \\]<ret>c[x]<esc><S-a> ✅ <esc>:insert-output date +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
+# append due date to end of line
+d = "@ghxs\\[ \\]<ret><S-a> 📅 <esc>:insert-output date +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
+# clear any priority
+0 = "@ghxs pri@[\\d]<ret>d"
+# Clear any order
+o = "@ghxs ::[\\d]*<ret>d"
+# Postpone due date by one day (can be repeated to continue postponing)
+p = "@ghxs📅 \\d{4}-\\d{2}-\\d{2}<ret>T:d:insert-output date -d '<C-r>\"+1 days' +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
+# Set date to one week later
+w = "@ghxsdue:\\d{4}-\\d{2}-\\d{2}<ret>T:d:insert-output date -d '<C-r>\"+7 days' +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
