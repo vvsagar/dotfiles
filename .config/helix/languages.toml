@@ -40,9 +40,17 @@ args = ["lsp"]
 command = "ruff"
 args = ["server"]
 
-[language-server.tinymist.config]
-tinymist.formatterMode = "typstyle"
-tinymist.lint.enabled = true
+[language-server.tinymist]
+command = "tinymist"
+config.preview.background.enabled = true
+config.preview.background.args = [
+  "--data-plane-host=127.0.0.1:0",
+  "--invert-colors=never",
+  "--open",
+]
+config.formatterMode = "typstyle"
+config.lint.enabled = true
+config.exportPdf = "onSave"
 
 [language-server.harper-ls]
 command = "harper-ls"

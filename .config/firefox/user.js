@@ -56,3 +56,6 @@ user_pref("browser.theme.toolbar-theme", 0);
 
 // Get rid of ugly firefox sidebar, using sideberry instead
 user_pref("sidebar.visibility", "hide-sidebar");
+
+// Open external links in a new window
+user_pref("browser.link.open_newwindow.override.external", 2);
