@@ -1,0 +1,6 @@
+# In the [manager] section, you can set up folder rules
+[[mgr.folder_rules]]
+path = "~/slides/**"
+sort_by = "alphabetical"
+sort_reverse = true
+sort_dir_first = true
