@@ -78,8 +78,16 @@ bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
-# Load syntax highlighting; should be last.
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+# auto suggestions in zsh, which also uses atuin
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null 
+
+export PATH="/home/vidya/.pixi/bin:$PATH"
 
 # Load atuin
 eval "$(atuin init zsh)"
+
+# load starship
+eval "$(starship init zsh)"
+
+# Load syntax highlighting; should be last.
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
