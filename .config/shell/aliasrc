@@ -53,9 +53,8 @@ alias \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="shutdown -h now" \
-	e='helix' \
+	e='hx' \
 	v='$EDITOR' \
-	hx='helix' \
 	p="pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
@@ -71,9 +70,14 @@ alias \
 
 alias \
 	lf="lfub" \
+	y="yazi" \
 	magit="nvim -c MagitOnly" \
 	ref='shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc'
 
 alias \
 	dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'\
 	dfg='dotfiles'
+
+# times in different zones
+alias \
+	ist='TZ="Asia/Kolkata" date'
