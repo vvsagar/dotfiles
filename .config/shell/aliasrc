@@ -77,3 +77,6 @@ alias \
 alias \
 	dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'\
 	dfg='dotfiles'
+
+alias \
+	b2='source /cvmfs/belle.cern.ch/tools/b2setup'
