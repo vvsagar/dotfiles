@@ -8,31 +8,63 @@ pushn = ["git", "push", "--allow-new"]
 n = ["new"]
 e = ["edit"]
 d = ["diff"]
-l = ["log"]
+l = ["log", "-n", "10"]
 ll = ["log", "-r", ".."]
 sp = ["split"]
+sq = ["squash"]
+rb = ["rebase"]
 # Find the closest ancestor with a bookmark pointing at it, and move it to the
 # parent of the working copy.
-tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+# tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+tug = ["util", "exec", "--", "sh", "-c", """
+if [ "x$1" = "x" ]; then
+  jj bookmark move --from "closest_bookmark(@)" --to "closest_pushable(@)"
+else
+  jj bookmark move --to "closest_pushable(@)" "$@"
+fi
+""", ""]
 # A smart auto-resolver for conflicts
 solve = ["resolve", "--tool", "mergiraf"]
 cm = ["commit", "-m"]
 dm = ["describe", "-m"]
-nb = ["bookmark", "create", "-r @-"]      # "new bookmark"
+bc = ["bookmark", "create", "-r @-"] # "new bookmark"
+ws = ["workspace"]
+ignore = [
+  'util',
+  'exec',
+  '--',
+  'bash',
+  '-c',
+  'jj config set --repo snapshot.auto-track "$(jj config get snapshot.auto-track) & ~$0" && jj file untrack $0',
+]
+
+[revset-aliases]
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable(to)' = 'heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'
 
 [ui]
 # paginate = "never"
 default-command = "status"
+# editor = "hx"
 
-[templates]
-draft_commit_description ='''
-    concat(
-      coalesce("\n", description, default_commit_description, "\n"),
-      surround(
-        "\nJJ: This commit contains the following changes:\n", "",
-        indent("JJ:     ", diff.stat(72)),
-      ),
-      "\nJJ: ignore-rest\n",
-      diff.git(),
-    )
-'''
+# [templates]
+# draft_commit_description = '''
+#     concat(
+#       coalesce("\n", description, default_commit_description, "\n"),
+#       surround(
+#         "\nJJ: This commit contains the following changes:\n", "",
+#         indent("JJ:     ", diff.stat(72)),
+#       ),
+#       "\nJJ: ignore-rest\n",
+#       diff.git(),
+#     )
+# '''
+
+# [signing]
+# behavior = "own"
+# backend = "ssh"
+# key = "~/.ssh/id_rsa.pub"
+
+[git]
+sign-on-push = true
+subprocess = true
