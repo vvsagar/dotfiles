@@ -81,3 +81,6 @@ alias \
 # times in different zones
 alias \
 	ist='TZ="Asia/Kolkata" date'
+
+alias \
+	b2='source /cvmfs/belle.cern.ch/tools/b2setup'
