@@ -81,7 +81,7 @@ bindkey -M visual '^[[P' vi-delete
 # auto suggestions in zsh, which also uses atuin
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null 
 
-export PATH="/home/vidya/.pixi/bin:$PATH"
+export PATH="$HOME/.pixi/bin:$PATH"
 
 # Load atuin
 eval "$(atuin init zsh)"
