@@ -68,3 +68,5 @@ default-command = "status"
 [git]
 sign-on-push = true
 subprocess = true
+# Prevent pushing work in progress or anything explicitly labeled "private"/"wip"/"draft"
+private-commits = "description('WIP:*') | description('wip:*') | description('draft:*') | description('Draft:*') | description('private:*')"
