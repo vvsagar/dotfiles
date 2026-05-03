@@ -7,7 +7,16 @@
 basename="${1%.*}"
 
 case "${*}" in
-	*.typ|*.tex|*.sil|*.m[dse]|*.[rR]md|*.mom|*.[0-9]) target="$(getcomproot "$1" || echo "$1")" ; setsid -f xdg-open "${target%.*}".pdf >/dev/null 2>&1 ;;
+	*.typ)
+		dir=$(dirname "$1")
+		if [ -f "$dir/main.typ" ]; then
+			pdf_to_open="$dir/main.pdf"
+		else
+			pdf_to_open="${1%.*}.pdf"
+		fi
+		setsid -f xdg-open "$pdf_to_open" >/dev/null 2>&1
+		;;
+	*.tex|*.sil|*.m[dse]|*.[rR]md|*.mom|*.[0-9]) target="$(getcomproot "$1" || echo "$1")" ; setsid -f xdg-open "${target%.*}".pdf >/dev/null 2>&1 ;;
 	*.html) setsid -f "$BROWSER" "$basename".html >/dev/null 2>&1 ;;
 	*.sent) setsid -f sent "$1" >/dev/null 2>&1 ;;
 esac

@@ -79,7 +79,7 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
 # auto suggestions in zsh, which also uses atuin
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null 
+source $XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions.plugin.zsh 2>/dev/null
 
 export PATH="$HOME/.pixi/bin:$PATH"
 

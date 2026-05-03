@@ -29,6 +29,7 @@ solve = ["resolve", "--tool", "mergiraf"]
 cm = ["commit", "-m"]
 dm = ["describe", "-m"]
 bc = ["bookmark", "create", "-r @-"] # "new bookmark"
+pb = ["push", "-b"]
 ws = ["workspace"]
 ignore = [
   'util',
