@@ -84,7 +84,9 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 export PATH="$HOME/.pixi/bin:$PATH"
 
 # Load atuin
-eval "$(atuin init zsh)"
+if [[ "$SLURMD_NODENAME" != *slurm* ]]; then
+    eval "$(atuin init zsh)"
+fi
 
 # load starship
 eval "$(starship init zsh)"
