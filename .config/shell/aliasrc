@@ -84,4 +84,5 @@ alias \
 	ist='TZ="Asia/Kolkata" date'
 
 alias \
-	b2='source /cvmfs/belle.cern.ch/tools/b2setup'
+	b2='source /cvmfs/belle.cern.ch/tools/b2setup'\
+	gb2_setup='source /cvmfs/belle.kek.jp/grid/gbasf2/pro/bashrc'
