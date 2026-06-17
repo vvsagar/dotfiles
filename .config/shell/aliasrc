@@ -64,15 +64,14 @@ alias \
 	oc='opencode'
 
 # tmux shortcuts
+# Created a shell script `ta` to replace `ta` and `tn`
 alias \
-	tl='tmux ls'\
-	ta='tmux attach -t'\
-	tn='tmux new -s'
+	tl='tmux ls'
 
 alias \
 	lf="lfub" \
 	y="yazi" \
-	magit="nvim -c MagitOnly" \
+	j="jj" \
 	ref='shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutenvrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc'
 
 alias \
