@@ -1,0 +1,38 @@
+#!/bin/sh
+set -euo pipefail
+
+# rmf - quickly delete files/directories using rsync for large dirs
+# Usage: rmf <path> [path ...]
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: $(basename "$0") <path> [path ...]" >&2
+  exit 1
+fi
+
+for p in "$@"; do
+  if [[ ! -e "$p" ]]; then
+    echo "Error: '$p' does not exist" >&2
+    exit 1
+  fi
+done
+
+echo "Paths to delete:"
+printf "  %s\n" "$@"
+read -r -p "Proceed? [y/N] " reply
+if [[ ! "$reply" =~ ^[yY]$ ]]; then
+  exit 1
+fi
+
+empty_dir=$(mktemp -d)
+
+for target in "$@"; do
+  if [[ -d "$target" && ! -L "$target" ]]; then
+    target="${target%/}"
+    rsync -a --delete-before "$empty_dir/" "$target/"
+    rm -rf "$target"
+  else
+    rm -f "$target"
+  fi
+done
+
+rm -rf "$empty_dir"
