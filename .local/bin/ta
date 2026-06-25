@@ -3,9 +3,9 @@ name=${1:?usage: ta <session-name>}
 if tmux has-session -t "$name" 2>/dev/null; then
   tmux attach -t "$name"
 else
-  echo -n "Session '$name' does not exist. Create it? [y/N] "
+  echo -n "Session '$name' does not exist. Create it? [Y/n] "
   read -r resp
-  if [[ "$resp" == [yY]* ]]; then
+  if [[ "$resp" != [nN]* ]]; then
     tmux new-session -s "$name"
   fi
 fi
