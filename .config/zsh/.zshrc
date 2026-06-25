@@ -94,5 +94,6 @@ fi
 # load starship
 eval "$(starship init zsh)"
 
-# Load syntax highlighting; should be last.
+[ -d "/afs/desy.de/user/v/vsagar/du/.cache/" ] && export UV_CACHE_DIR='/afs/desy.de/user/v/vsagar/du/.cache/uv'
+
 source $XDG_CONFIG_HOME/zsh/plugins/fast-syntax-highlighting.plugin.zsh 2>/dev/null
