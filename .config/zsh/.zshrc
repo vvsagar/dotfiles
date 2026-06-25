@@ -95,4 +95,4 @@ fi
 eval "$(starship init zsh)"
 
 # Load syntax highlighting; should be last.
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+source $XDG_CONFIG_HOME/zsh/plugins/fast-syntax-highlighting.plugin.zsh 2>/dev/null
