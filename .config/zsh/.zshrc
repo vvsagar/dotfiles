@@ -25,6 +25,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
+compdef '_files' rmf
 
 # vi mode
 bindkey -v
@@ -83,8 +84,6 @@ source $XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions.plugin.zsh 2>/dev/null
 
 export PATH="$HOME/.pixi/bin:$PATH"
 export PATH="$HOME/.local/share/mise/shims:$PATH"
-
-eval "$(omp completions zsh)"
 
 # Load atuin
 if [[ "$SLURMD_NODENAME" != *slurm* ]]; then
