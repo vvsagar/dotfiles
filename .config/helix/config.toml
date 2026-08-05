@@ -46,6 +46,7 @@ display-progress-messages = true
 display-inlay-hints = true
 
 [keys.normal]
+"C-/" = "toggle_comments"
 "^" = "goto_first_nonwhitespace"
 "$" = "goto_line_end"
 Cmd-s = ":write"
@@ -102,16 +103,23 @@ A-k = [
 
 [keys.normal.space]
 w = ":write"
-q = ":quit"
-Q = ":quit-all!"
+# q = ":write-quit"
+# Q = ":quit-all!"
+# Print the current line's git blame information to the statusline.
+# b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
 
 [keys.normal.","]
 # Compile document, be it typst/groff/LaTeX/markdown/etc.
 c = [":write", ":sh compiler $PWD/%{buffer_name}"]
 # Open corresponding .pdf/.html or preview
 p = ":sh opout %{buffer_name}"
+# Tinymist render
+r = ":lsp-workspace-command tinymist.startDefaultPreview"
+
 
 [keys.select]
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
 X = ["extend_line_up", "extend_to_line_bounds"]
 A-x = "extend_to_line_bounds"
 A-g = ":reset-diff-change"
@@ -121,18 +129,23 @@ A-g = ":reset-diff-change"
 [keys.normal."\\"]
 # taskfinder shortcuts
 # Convert the line into a task
-t = "@ghwi- [ ]<esc>"
-# mark as done ("[ ]" to "[x]")
-X = "@ghxs\\[ \\]<ret>c[x]<esc>" # mark as done
-# mark as done and append completed date to end of line
+t = "@ghwi- [ ]<ret><esc>k"
+# mark as done ("[ ]" to "[x]") and append completed date to end of line
 x = "@ghxs\\[ \\]<ret>c[x]<esc><S-a> ✅ <esc>:insert-output date +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
+# mark as undone ("[x]" to "[ ]") and remove completed date to end of line
+X = "@ghxs\\[x\\]<ret>c[ ]<esc>ghxs ✅ \\d{4}-\\d{2}-\\d{2}<ret>d"
+# x = "x:pipe sed -E 's/\\[ \\](.*)/[x]\\1 ✅ '$(date +%%F)'/;t;s/\\[x\\](.*) ✅ [0-9-]{10}$/[ ]\\1/'<ret>"
 # append due date to end of line
 d = "@ghxs\\[ \\]<ret><S-a> 📅 <esc>:insert-output date +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
+# d = "@ghxs\\[ \\]<ret><S-a> due:<esc>:insert-output date +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
 # clear any priority
 0 = "@ghxs pri@[\\d]<ret>d"
 # Clear any order
 o = "@ghxs ::[\\d]*<ret>d"
+# Change due date to today
+c = "@ghxs📅 \\d{4}-\\d{2}-\\d{2}<ret>d<S-a>📅 <esc>:insert-output date +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
 # Postpone due date by one day (can be repeated to continue postponing)
-p = "@ghxs📅 \\d{4}-\\d{2}-\\d{2}<ret>T:d:insert-output date -d '<C-r>\"+1 days' +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
+p = "@ghxs📅 \\d{4}-\\d{2}-\\d{2}<ret>d<S-a>📅 <esc>:insert-output date -d '<C-r>\"+1 days' +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
+# p = "@ghxs📅 \\d{4}-\\d{2}-\\d{2}<ret>T:d:insert-output date -d '+1 days' +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
 # Set date to one week later
 w = "@ghxsdue:\\d{4}-\\d{2}-\\d{2}<ret>T:d:insert-output date -d '<C-r>\"+7 days' +%%Y-%%m-%%d<ret>:pipe tr -d '\n'<ret>"
