@@ -10,9 +10,18 @@ auto-format = true
 
 [[language]]
 name = "python"
-# language-servers = ["pylsp", "ruff"]
 language-servers = ["pyrefly", "ruff"]
-auto-format = true
+auto-format = false
+# auto-format = true
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
+[language-server.ty.config]
+inlayHints.callArgumentNames = false
+experimental.rename = true
+experimental.autoImport = true
 
 [language-server.rust-analyzer.config.check]
 command = "clippy"
@@ -31,10 +40,17 @@ auto-format = true
 [[language]]
 name = "markdown"
 soft-wrap.wrap-at-text-width = true
+comment-tokens = ["-", "+", "*", "- [ ]", ">"]
+language-servers = ["marksman", "harper-ls"]
+# language-servers = ["markdown-oxide"]
 
-[language-server.pyrefly]
-command = "pyrefly"
-args = ["lsp"]
+[[language]]
+name = "rst"
+language-servers = ["harper-ls"]
+
+# [language-server.pyrefly]
+# command = "pyrefly"
+# args = ["lsp"]
 
 [language-server.ruff]
 command = "ruff"
@@ -42,8 +58,13 @@ args = ["server"]
 
 [language-server.tinymist]
 command = "tinymist"
-config.preview.background.enabled = true
-config.preview.background.args = [
+# config.preview.background.enabled = true
+# config.preview.background.args = [
+#   "--data-plane-host=127.0.0.1:0",
+#   "--invert-colors=never",
+#   "--open",
+# ]
+config.preview.browsing.args = [
   "--data-plane-host=127.0.0.1:0",
   "--invert-colors=never",
   "--open",
@@ -60,7 +81,7 @@ args = ["--stdio"]
 diagnosticSeverity = "warning"
 isolateEnglish = false
 dialect = "American"
-maxFileLength = 12000
+maxFileLength = 500000
 ignoredLintsPath = []
 
 [language-server.harper-ls.config.harper-ls.linters]
@@ -82,13 +103,17 @@ ForceStable = false
 [language-server.harper-ls.config.harper-ls.markdown]
 IgnoreLinkTitle = false
 
-[language-server.yaml-language-server.config.yaml.format]
-enable = true
+[language-server.yaml-language-server.config.yaml]
+format = { enable = true }
+validation = true
 
 [language-server.yaml-language-server.config.yaml.schemas]
-kubernetes = "/*.yaml"
 "https://json.schemastore.org/github-action.json" = "/.github/**/actions.yml"
 "https://json.schemastore.org/github-workflow.json" = "/.github/workflows/*.{yml,yaml}"
+"https://raw.githubusercontent.com/prefix-dev/pixi/main/schema/schema.json" = "recipe.{yml,yaml}"
 
 [language-server.yaml-language-server.config.yaml.schemaStore]
 url = "https://json.schemastore.org/package.json"
+
+[language-server.taplo]
+config = {}
