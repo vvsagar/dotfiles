@@ -10,9 +10,8 @@ auto-format = true
 
 [[language]]
 name = "python"
-# language-servers = ["pylsp", "ruff"]
 language-servers = ["pyrefly", "ruff"]
-auto-format = true
+auto-format = false
 
 [language-server.rust-analyzer.config.check]
 command = "clippy"
